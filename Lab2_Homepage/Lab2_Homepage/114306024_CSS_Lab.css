@@ -1,0 +1,149 @@
+/* ----------------------------------- */
+/* 實驗課要求 6 & 7: <body> 樣式 */
+/* ----------------------------------- */
+body {
+    color: #333;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ----------------------------------- */
+/* 頁面標題區塊樣式 */
+/* ----------------------------------- */
+.page-header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-family: "Georgia", serif;
+    margin-bottom: 5px;
+}
+
+/* ----------------------------------- */
+/* Navbar (均分整行的版本） */
+/* ----------------------------------- */
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    background-color: #2c3e50;
+
+    position: relative;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+
+    display: flex;            /* ⭐ 使用 flex */
+    justify-content: space-between;
+}
+
+.navbar li {
+    flex: 1;                  /* ⭐ 每個 li 平均分一份 */
+    text-align: center;
+    position: relative;       /* 讓 dropdown 定位用 */
+}
+
+.navbar li a {
+    display: block;
+    padding: 14px 0;
+    color: white;
+    text-decoration: none;
+}
+
+/* ----------------------------------- */
+/* Dropdown */
+/* ----------------------------------- */
+.dropdown {
+    overflow: visible !important;   /* navbar 用 flex 不會剪掉 dropdown */
+}
+
+.dropbtn {
+    cursor: pointer;
+    background-color: #2c3e50;
+}
+
+/* 下拉內容 */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;                   /* ⭐ dropdown 寬度跟父層 li 一樣 */
+    background-color: #2c3e50;
+
+    list-style: none;
+    padding: 0;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+.dropdown-content li a {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #34495e;
+}
+
+/* hover 顯示 */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ----------------------------------- */
+/* Main 內容區 */
+/* ----------------------------------- */
+main {
+    padding: 20px;
+    padding-top: 25px;
+}
+
+/* ----------------------------------- */
+/* Media Queries */
+/* ----------------------------------- */
+@media all and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar li {
+        flex: none;
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: relative;
+        width: 100%;
+    }
+}
+
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-family: "Times New Roman", serif;
+    }
+
+    .page-header,
+    .navbar {
+        display: none;
+    }
+
+    main {
+        padding: 0;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+
