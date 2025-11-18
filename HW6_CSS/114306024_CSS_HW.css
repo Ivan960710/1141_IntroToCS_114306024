@@ -1,0 +1,227 @@
+/* General Setup */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Light, neutral background for the whole page */
+    margin: 0;
+    padding: 20px;
+    /* Optional: Use flex on body to center the container easily, per example */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Requirement #1: Container Design --- */
+.main-container {
+    width: 1000px; /* Fixed width */
+    max-width: 90%; /* To look good on smaller screens if the viewport is less than 1000px */
+    background-color: #ffffff;
+    border-radius: 12px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    
+    /* Flex layout to divide into left and right panels */
+    display: flex; 
+    overflow: hidden; /* To keep rounded corners on child elements */
+}
+
+/* --- Requirement #2: Panel Division --- */
+.left-panel {
+    width: 30%; /* About 30% of container width */
+    background-color: #3b5998; /* Darker, distinct color for left panel (NCCU Blue) */
+    color: white;
+    padding-bottom: 20px; /* Space at the bottom */
+}
+
+.right-panel {
+    width: 70%; /* About 70% of container width */
+    padding: 30px;
+    box-sizing: border-box; /* Include padding in the 70% width */
+}
+
+/* --- Requirement #3: Left Panel Structure --- */
+.profile-photo {
+    width: 100%; /* Fill the panel width */
+    height: auto;
+    display: block;
+}
+
+.text-content {
+    padding: 20px;
+}
+
+.name {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    opacity: 0.8;
+}
+
+.section-subtitle {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4); /* Divider for subsections */
+}
+
+.about-me-text {
+    line-height: 1.5;
+}
+
+.contact-list {
+    list-style: none; /* Remove list marker */
+    padding: 0;
+}
+
+.contact-list li {
+    margin-bottom: 5px;
+}
+
+.contact-list a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-list a:hover {
+    color: #ffcc00; /* Subtle hover effect */
+}
+
+.nccu-icon {
+    width: 120px; /* Set a size for the icon */
+    height: auto;
+    display: block;
+    margin-top: 100px;
+}
+
+/* --- Requirement #4: Right Panel Structure (General Section Styling) --- */
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #666; /* Bottom border to separate title from content */
+    margin-bottom: 15px;
+}
+
+/* --- Requirement #5: Education Section --- */
+.education-item {
+    display: flex; /* To place year and description side-by-side */
+    margin-bottom: 10px; /* Sufficient margin between timeline items */
+    line-height: 1.4;
+}
+
+.year {
+    font-weight: bold;
+    color: #3b5998;
+    min-width: 120px; /* Fix a width for the year column for alignment */
+}
+
+.description {
+    flex-grow: 1;
+}
+
+/* --- Requirement #6: Skill Section --- */
+.skill-tags {
+    display: flex; /* To display tags inline */
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    /* Look like badges/tags */
+    display: inline-block; 
+    padding: 5px 12px; 
+    border-radius: 15px; /* Rounded corners */
+    background-color: #e0e7ff; /* Light background color */
+    color: #3b5998; /* Darker text color for contrast */
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* --- Requirement #7: Homework & Lab Section --- */
+.hw-lab-container {
+    display: flex; /* Two-column layout using flex */
+    gap: 20px;
+}
+
+.hw-column, .lab-column {
+    flex: 1; /* Equal width for both columns */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners to look like cards */
+    background-color: #f7f7f7; /* Light background color for cards */
+}
+
+.hw-column h3, .lab-column h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.hw-column ul, .lab-column ul {
+    list-style-type: disc;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.hw-column a, .lab-column a {
+    text-decoration: none; /* Not have an underline by default */
+    color: #0056b3; /* Darker link color */
+    transition: color 0.3s;
+}
+
+.hw-column a:hover, .lab-column a:hover {
+    color: #3b5998; /* Hover effect to indicate clickable link */
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+/* --- Requirement #8: Favorite Music Section --- */
+.music-row {
+    display: flex;
+    justify-content: space-around; /* Evenly spaced and properly aligned */
+    align-items: flex-start;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.music-item {
+    flex: 1;
+    margin: 0 5px; /* Add a small gap between items */
+}
+
+.music-item a {
+    text-decoration: none;
+    color: #333;
+    display: block; /* Make the link container a block for full click area */
+}
+
+.music-cover {
+    width: 60px; /* Uniform size */
+    height: 60px; /* Uniform aspect ratio (square) */
+    object-fit: contain; /* Ensures image fits without cropping */
+    display: block;
+    margin: 0 auto 5px auto; /* Centered in the row, with margin below */
+}
+
+.song-title {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.music-note {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
