@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>114306024_Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #game-result {
+            margin-top: 30px;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        #game-result img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body onload="startGame()">
+
+    <h1>114306024_Number Guessing Game</h1> 
+
+    <div id="game-result">
+        遊戲結果將顯示在這裡...
+    </div>
+
+    <script>
+        const MIN_RANGE = 1;
+        const MAX_RANGE = 100;
+        const MAX_CHANCES = 7;
+        
+        const answer = Math.floor(Math.random() * MAX_RANGE) + MIN_RANGE;
+        
+        let chances = MAX_CHANCES;
+        let hasGuessedCorrectly = false;
+
+        function startGame() {
+            while (chances > 0) {
+                let promptMessage = "請輸入" + MIN_RANGE + "到" + MAX_RANGE + "之間的整數。\n";
+                promptMessage += "你還有" + chances + "次機會。";
+
+                let input = prompt(promptMessage);
+
+                if (input === null) {
+                    alert("遊戲已取消。正確答案是 " + answer);
+                    displayImage('wrong');
+                    return;
+                }
+
+                input = input.trim();
+                if (input === "" || isNaN(input)) {
+                    alert("請輸入有效的數字!");
+                    continue;
+                }
+
+                let guess = Number(input);
+
+                if (guess < MIN_RANGE || guess > MAX_RANGE) {
+                    alert("請輸入有效範圍內的數字(不能超出" + MIN_RANGE + "到" + MAX_RANGE + ")!");
+                    continue;
+                }
+
+                if (guess === answer) {
+                    hasGuessedCorrectly = true;
+                    alert("恭喜你答對了!正確答案是" + answer);
+                    break;
+                } else {
+                    chances--;
+                    
+                    if (chances > 0) {
+                        let hint = (guess < answer) ? "太低了! 請嘗試更高的數字。" : "太高了! 請嘗試更低的數字。";
+                        alert(hint);
+                    }
+                }
+            }
+
+            if (hasGuessedCorrectly) {
+                displayImage('correct');
+            } else if (chances === 0) {
+                alert("很抱歉，你沒有在" + MAX_CHANCES + "次內猜中。正確答案是 " + answer);
+                displayImage('wrong');
+            }
+        }
+
+        function displayImage(result) {
+            const resultDiv = document.getElementById('game-result');
+            resultDiv.innerHTML = '';
+            
+            // 圖片路徑設置： images/correct.jpg 或 images/wrong.jpg
+            const imagePath = "images/" + result + ".jpg"; 
+            
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = (result === 'correct') ? '恭喜答對' : '錯誤';
+            
+            resultDiv.appendChild(img);
+        }
+
+    </script>
+
+</body>
+</html>
