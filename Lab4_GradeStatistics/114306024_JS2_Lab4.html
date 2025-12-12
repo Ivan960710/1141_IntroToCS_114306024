@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>114306024_JS2_Lab4 - Grade Statistics</title>
+  <link rel="stylesheet" href="114306024_JS2_Lab4.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>成績統計 Lab4</h1>
+
+    <section class="form-section">
+      <label for="mathInput">Math 分數：</label>
+      <input id="mathInput" type="number" min="0" max="100" step="0.01" placeholder="輸入 Math 分數" />
+
+      <label for="engInput">English 分數：</label>
+      <input id="engInput" type="number" min="0" max="100" step="0.01" placeholder="輸入 English 分數" />
+
+      <button id="submitBtn" type="button">Submit</button>
+      <button id="clearBtn" type="button">Clear Rows</button>
+
+      <p id="msg" aria-live="polite"></p>
+    </section>
+
+    <section class="table-section">
+      <table id="gradesTable" aria-label="Grades table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Math</th>
+            <th>English</th>
+            <th>Average</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Column Avg</strong></td>
+            <td id="mathColAvg">—</td>
+            <td id="engColAvg">—</td>
+            <td id="overallAvg">—</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+  </main>
+
+  <script src="114306024_JS2_Lab4.js"></script>
+</body>
+</html>
